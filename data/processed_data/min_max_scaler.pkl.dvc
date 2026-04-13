@@ -1,0 +1,5 @@
+outs:
+- md5: 366f2c259353db209b1c0a88e0116721
+  size: 1351
+  hash: md5
+  path: min_max_scaler.pkl
