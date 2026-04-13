@@ -1,2 +1,7 @@
-/venv
+.venv
 /clean_data.csv
+*.pkl
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

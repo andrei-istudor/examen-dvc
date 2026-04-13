@@ -14,7 +14,11 @@ import click
 # @click.argument('input_folder', type=click.Path(exists=False), required=0)
 # @click.argument('output_folder', type=click.Path(exists=False), required=0)
 def main(input_folder= './data/processed_data'):
-    """ performs grid search for hyperparameter tuning using SVR.
+    """ GridSearch for Best Parameters: 
+    Decide on the regression model to implement and the parameters to test. 
+        - chose SVR 
+        - checked also linear regression but no deeper research
+    At the end of this script, we will have the best parameters saved as a .pkl file in the models directory.
     """
     logger = logging.getLogger(__name__)
     logger.info('performing paramenter search for SVR')

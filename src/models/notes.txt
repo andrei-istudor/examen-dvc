@@ -1,0 +1,1 @@
+the train_model could be trained on the full dataset, but it's not clear from the description - i used X_train/y_train

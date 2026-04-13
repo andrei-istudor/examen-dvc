@@ -13,7 +13,8 @@ import click
 # @click.argument('data_folder', type=click.Path(exists=False), required=0)
 # @click.argument('models_folder', type=click.Path(exists=False), required=0)
 def main(data_folder= './data/processed_data', models_folder= './models'):
-    """ trains the model with the best parameters found in the previous step.
+    """ Model Training: Using the parameters found through GridSearch, 
+    we will train the model and save the trained model in the models directory.
     """
     logger = logging.getLogger(__name__)
     logger.info('training the model with the best parameters found in the previous step')
