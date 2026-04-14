@@ -30,11 +30,11 @@ def main(data_folder= './data/processed_data', models_folder= './models'):
 
     X_path = f'{data_folder}/X_test_scaled.csv'
     y_path = f'{data_folder}/y_test.csv'
-    models_path = f'{models_folder}/best_params.pkl'
+    models_path = f'{models_folder}/best_model.pkl'
 
-    process_data(X_path, y_path, models_path)
+    process_data(X_path, y_path, data_folder, models_path)
 
-def process_data(X_path, y_path, models_path):
+def process_data(X_path, y_path, data_folder, models_path):
     model = pickle.load(open(models_path, 'rb'))
     X_test = pd.read_csv(X_path)
     y_test = pd.read_csv(y_path)
@@ -53,7 +53,7 @@ def process_data(X_path, y_path, models_path):
         json.dump(metrics, f)
 
     y_pred_df = pd.DataFrame(y_pred, columns=['predictions'])
-    y_pred_df.to_csv('./data/predictions.csv', index=False)
+    y_pred_df.to_csv(f'{data_folder}/predictions.csv', index=False)
 
 
 if __name__ == '__main__':
