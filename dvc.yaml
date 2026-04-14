@@ -1,0 +1,49 @@
+stages:
+  split_data:
+    cmd: python src/data/split_data.py
+    deps:
+    - data/raw_data/raw.csv
+    - src/data/split_data.py
+    outs:
+    - data/processed_data/X_test.csv
+    - data/processed_data/X_train.csv
+    - data/processed_data/y_test.csv
+    - data/processed_data/y_train.csv
+  norm_data:
+    cmd: python src/data/norm_data.py
+    deps:
+    - data/processed_data/X_test.csv
+    - data/processed_data/X_train.csv
+    - src/data/norm_data.py
+    outs:
+    - data/processed_data/X_test_scaled.csv
+    - data/processed_data/X_train_scaled.csv
+  search_params:
+    cmd: python src/models/search_params.py
+    deps:
+    - data/processed_data/X_train_scaled.csv
+    - data/processed_data/y_train.csv
+    - src/models/search_params.py
+    outs:
+    - models/best_params.pkl
+  train_model:
+    cmd: python src/models/train_model.py
+    deps:
+    - data/processed_data/X_train_scaled.csv
+    - data/processed_data/y_train.csv
+    - models/best_params.pkl
+    - src/models/train_model.py
+    outs:
+    - models/best_model.pkl
+  eval_model:
+    cmd: python src/models/eval_model.py
+    deps:
+    - data/processed_data/X_test_scaled.csv
+    - data/processed_data/y_test.csv
+    - models/best_model.pkl
+    - src/models/eval_model.py
+    metrics:
+    - metrics/scores.json:
+        cache: false
+    outs:
+    - data/processed_data/predictions.csv
