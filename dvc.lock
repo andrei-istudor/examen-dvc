@@ -39,14 +39,6 @@ stages:
       hash: md5
       md5: f47c6a18c32ab00a3459a192371c3879
       size: 209569
-    - path: data/processed_data/y_test.csv
-      hash: md5
-      md5: ae8a26ffa58db5ce4981153918f57921
-      size: 6522
-    - path: data/processed_data/y_train.csv
-      hash: md5
-      md5: 8316851bcf6d1027f76cd3f43355a581
-      size: 25885
     - path: src/data/norm_data.py
       hash: md5
       md5: fa158256a885a18b7dfdb58b6c37623b
@@ -60,10 +52,6 @@ stages:
       hash: md5
       md5: a6771a05da585786c405d1ef86ae7c71
       size: 222335
-    - path: data/processed_data/min_max_scaler.pkl
-      hash: md5
-      md5: 366f2c259353db209b1c0a88e0116721
-      size: 1351
   search_params:
     cmd: python src/models/search_params.py
     deps:
