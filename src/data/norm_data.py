@@ -9,22 +9,28 @@ import click
 
 # @click.command()
 # @click.argument('input_folder', type=click.Path(exists=False), required=0)
-# @click.argument('output_folder', type=click.Path(exists=False), required=0)
-def main(input_folder= './data/processed_data', output_folder= './data/processed_data'):
-    """ createa a scaler from the training data and uses it to scale train and test data
-    saves the scaled data in output_folder, together with the scaler - for further usage
+def main(data_folder= './data/processed_data'):
+    """ 
+    Data Normalization: 
+    As you may notice, the data varies widely in scale, so normalization is necessary. 
+    You can use existing functions to construct this script. 
+    As output, this script will create two new datasets (X_train_scaled, X_test_scaled) 
+    which you will also save in data/processed*. 
+    *(the strucuture on the GitHub has data/processed_data)
+
+    Create a scaler from the training data and uses it to scale train and test data
+    Save the scaled data together with the scaler - for further usage
     """
     logger = logging.getLogger(__name__)
     logger.info('scaling input data')
 
     # input_folder = click.prompt('Enter the directory path for the input data', type=click.Path(exists=True))
-    # output_folder = click.prompt('Enter the directory path for the output preprocessed data (e.g., data/preprocessed_data)', type=click.Path())
 
-    X_train_path = f'{input_folder}/X_train.csv'
-    X_test_path = f'{input_folder}/X_test.csv'
+    X_train_path = f'{data_folder}/X_train.csv'
+    X_test_path = f'{data_folder}/X_test.csv'
 
-    X_train_scaled_path = f'{output_folder}/X_train_scaled.csv'
-    X_test_scaled_path = f'{output_folder}/X_test_scaled.csv'
+    X_train_scaled_path = f'{data_folder}/X_train_scaled.csv'
+    X_test_scaled_path = f'{data_folder}/X_test_scaled.csv'
 
     process_data(X_train_path, X_train_scaled_path, X_test_path, X_test_scaled_path)
 

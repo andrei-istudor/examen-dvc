@@ -11,11 +11,19 @@ import click
 # @click.argument('input_folder', type=click.Path(exists=False), required=0)
 # @click.argument('output_folder', type=click.Path(exists=False), required=0)
 def main(input_folder= './data/raw_data', output_folder= './data/processed_data'):
-    """ Splits the raw data (from (../data/raw_data) in train and test sets 
+    """ 
+    Data Splitting: 
+    Split the data into training and testing sets. 
+    Our target variable is silica_concentrate, located in the last column of the dataset. 
+    This script will produce 4 datasets (X_test, X_train, y_test, y_train) 
+    that you can store in data/processed*.
+    *(the strucuture on the GitHub has data/raw_data and data/processed_data)
+
+    Splits the raw data (from (../data/raw_data) in train and test sets 
     (saved in../data/preprocessed).
     """
     logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data')
+    logger.info('splitting the raw data into train and test sets + target')
 
     # input_folder = click.prompt('Enter the directory path for the input data', type=click.Path(exists=True))
     # output_folder = click.prompt('Enter the directory path for the output preprocessed data (e.g., data/preprocessed_data)', type=click.Path())

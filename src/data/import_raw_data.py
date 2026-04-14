@@ -3,6 +3,7 @@ import os
 import logging
 from check_structure import check_existing_file, check_existing_folder
 
+#NOTE: I took over code from the Liora DVC excercises to get familiar with the way this is done there
 
 def import_raw_data(raw_data_relative_path, 
                     filenames,
